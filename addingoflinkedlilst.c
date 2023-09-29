@@ -9,7 +9,7 @@ struct node
 } *head1, *head2;
 void create_list_2(int n);
 void create_list_1(int n);
-void display_1();s
+void display_1();
 void display_2();
 int main()
 {
@@ -29,6 +29,7 @@ void create_list_1(int n)
     int i;
     struct node *newnode, *temp;
     head1 = temp = NULL;
+    // head1 = temp = NULL;
 
     newnode = (struct node *)malloc(sizeof(struct node));
 
@@ -41,7 +42,6 @@ void create_list_1(int n)
         temp->next = newnode;
         temp = newnode;
     }
-}
 }
 void create_list_2(int n)
 {

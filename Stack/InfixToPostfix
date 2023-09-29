@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <string.h>
+
+int is_empty(int top);
+int prec(char s);
+void push(char st[], char value, int *top, int max);
+char pop(char st[], int *top);
+
+int main()
+{
+    int top = -1;
+    int max = 100;
+    char st[max];
+    char ans[100] = "";
+    char s[20] = "a+b/c-d*e";
+    int n = strlen(s);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            ans[strlen(ans)] = s[i];
+        }
+        else
+        {
+            if (is_empty(top) || s[i] == '(')
+            {
+                push(st, s[i], &top, max);
+            }
+            else if (prec(s[i]) > prec(st[top]))
+            {
+                push(st, s[i], &top, max);
+            }
+            else
+            {
+                if (s[i] == ')')
+                {
+                    while (st[top] != '(')
+                    {
+                        ans[strlen(ans)] = pop(st, &top);
+                    }
+                    if (st[top] == '(')
+                    {
+                        pop(st, &top);
+                    }
+                }
+                else
+                {
+                    while (!is_empty(top) && prec(s[i]) <= prec(st[top]))
+                    {
+                        ans[strlen(ans)] = pop(st, &top);
+                    }
+                    push(st, s[i], &top, max);
+                }
+            }
+        }
+    }
+
+    while (!is_empty(top))
+    {
+        ans[strlen(ans)] = pop(st, &top);
+    }
+
+    printf("%s\n", ans);
+    return 0;
+}
+
+int is_empty(int top)
+{
+    if (top == -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int prec(char s)
+{
+    switch (s)
+    {
+    case '-':
+    case '+':
+        return 1;
+    case '*':
+    case '/':
+        return 2;
+    case '(':
+        return 0;
+    default:
+        return -1; // Invalid operator
+    }
+}
+
+void push(char st[], char value, int *top, int max)
+{
+    if ((*top) < max - 1)
+    {
+        st[++(*top)] = value;
+    }
+    else
+    {
+        printf("Stack is full\n");
+    }
+}
+
+char pop(char st[], int *top)
+{
+    if (!is_empty(*top))
+    {
+        return st[(*top)--];
+    }
+    printf("Stack is empty\n");
+    return '\0';
+}

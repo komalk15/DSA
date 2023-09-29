@@ -26,17 +26,17 @@ void Create_list(int n)
 {
     struct node *temp,*newnode;
     int i;
-    head =0;
-  
+    head=0;
     for(i=0;i<n;i++)
     {
         newnode=(struct node *)malloc(sizeof(struct node));
         scanf("%d",&newnode->data);
-        newnode->prev =0;
-        newnode->next =0;
+        newnode->next=0;
+        newnode->prev=0;
         if(head==0)
         {
             head=temp=newnode;
+            
 
         }
         else

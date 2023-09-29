@@ -1,26 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
-void create_list(int n);
+void create_list(int n,node **head);
 void display_linked_list();
 
-struct node
+typedef struct node
 {
     int data;
     struct node * next;
 
-}*head;
+}node;
 int main()
 {
     int n;
-    printf("Enter the number of nodes ");
-    scanf("%d",&n);
-    create_list(n);
+    node  *head;
+    create_list(5,&head);
+    create_list(5,&head);
+    create_list(5,&head);
+    
     printf("\nThe the data of the list  is ");
     display_linked_list();
     return 0;
 
 }
-void create_list (int n)
+void create_list (int n,node **head)
 {
 
     struct node *temp,*newnode;
