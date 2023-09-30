@@ -25,14 +25,13 @@ int main()
     reverse_dobly_linked();
     printf("\nThe the data of the list after being reversed is ");
     Display_linked_list();
-    Display_linked_list();
     return 0;
 
 
 }
 void Create_list(int n)
 {
-    struct node *temp,*newnode;
+    struct node *tail,*newnode;
     int i;
     head =0;
   
@@ -44,14 +43,14 @@ void Create_list(int n)
         newnode->next =0;
         if(head==0)
         {
-            head=temp=newnode;
+            head=tail=newnode;
 
         }
         else
         {
-            temp->next=newnode;
-            newnode->prev=temp;
-            temp=newnode;
+            tail->next=newnode;
+            newnode->prev=tail;
+            tail=newnode;
 
         }
     }
@@ -79,11 +78,10 @@ void reverse_dobly_linked()
         nextnode=current->next;
         current->next=current->prev;
         current->prev=nextnode;
-        current =nextnode;
-
+        current=nextnode;
 
     }
-    
+    current =head;
     head=tail;
     tail=current;
 
