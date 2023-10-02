@@ -106,7 +106,6 @@ void insert_node_at_beginning(int n,node **head)
         (*head)=newnode;
         newnode->next=NULL;
 
-
     }
     else
     {
@@ -147,7 +146,7 @@ void insert_node_at_a_given_position(int pos ,int n,node **head)
     else
     {
         temp = *head;
-        while(i<pos)
+        while(i < pos-1)
         {
             i++;
             temp=temp->next;

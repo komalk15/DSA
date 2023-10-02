@@ -1,29 +1,30 @@
 #include<stdio.h>
 #include<stdlib.h>
-void create_list(int n);
+void create_list(int n,struct node **head);
 void display_linked_list();
-void delete_node_beg();
-void delete_node_end();
+// void delete_node_beg();
+// void delete_node_end();
 
 struct node
-    {
-        int data;
-        struct node * next;
+{
+    int data;
+    struct node * next;
 
-    }*head;
+};
 int main()
 {
     int n;
+    struct node *head=NULL;
     printf("Enter the number of nodes ");
     scanf("%d",&n);
-    create_list(n);
+    create_list(5,&head);
     printf("The the data of the list  is ");
     display_linked_list();
-    delete_node_beg();
-    printf("\nDeleting the node from the beginning of the list:   ");
-    display_linked_list();
-    printf("\nDeleting the node from the end of list:   ");
-    delete_node_end();
+    // delete_node_beg();
+    // printf("\nDeleting the node from the beginning of the list:   ");
+    // display_linked_list();
+    // printf("\nDeleting the node from the end of list:   ");
+    // delete_node_end();
     display_linked_list();
     printf("\nDeleting the node from the position specific by the user:  ");
    
@@ -31,7 +32,7 @@ int main()
     return 0;
 
 }
-void create_list (int n)
+void create_list (int n,struct node **head)
 {
 
     struct node *temp,*newnode;
