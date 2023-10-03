@@ -1,1 +1,1 @@
-delete (&head, pos);
+node *tail = (*head)->prev;
