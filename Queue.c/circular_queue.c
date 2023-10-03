@@ -1,34 +1,36 @@
 #include<stdio.h>
 #define max 100
-void enqueue(int q[],int n,int **front ,int **rear);
-int dequeue(int q[],int **front,int**rear);
-void display(int q[],int *front,int *rear);
+void enqueue(int q[],int n,int **Front ,int **rear);
+int dequeue(int q[],int **Front,int**rear);
+void display(int q[],int *Front,int *rear);
 int main()
 {
-   
-    int front;
+   //intialzing
+    int front=-1;
     int rear=-1;
     int q[max];
     int n;
-    
+    //insert
     enqueue(q,4,&front ,&rear);
     enqueue(q,4,&front ,&rear);
     enqueue(q,4,&front ,&rear);
     enqueue(q,4,&front ,&rear);
     printf("Queue after deletion is");
+
+    //delete
     dequeue(q,&front,&rear);
     display(q,&front,&rear);
 
 
 }
-void enqueue(int q[],int n,int **front,int **rear)
+void enqueue(int q[],int n,int **Front,int **rear)
 {
-    if(*front==-1 && *rear==-1)
+    if(*Front==-1 && *rear==-1)
     {
-        *front=*rear=0;
+        *Front=*rear=0;
         q[*rear]=n;
     }
-    if ((*rear + 1) % max == *front)
+    if ((*rear + 1) % max == *Front)
     {
         printf("Queue is full");
 
@@ -42,29 +44,29 @@ void enqueue(int q[],int n,int **front,int **rear)
 
     
 }
-int dequeue(int q[],int **front,int **rear)
+int dequeue(int q[],int **Front,int **rear)
 {
-    if((*front)==-1 && (*rear)==-1)
+    if((*Front)==-1 && (*rear)==-1)
     {
         printf("Queue is empty");
         return -1;
     }
-    else if(*front==*rear)
+    else if(*Front==*rear)
     {
-        *front=*rear=-1;
+        *Front=*rear=-1;
 
     }
     else
     {
-        int t=q[*front];
-        *front=((*front)+1)%max;
+        int t=q[*Front];
+        *Front=((*Front)+1)%max;
         return t;
     }
 
 }
-void display(int q[],int *front,int * rear)
+void display(int q[],int *Front,int * rear)
 {
-    if(*front == -1 && rear ==-1)
+    if(*Front == -1 && rear ==-1)
         printf("Queue is empty");
     
     else
