@@ -1,114 +1,124 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct node
 {
     int data;
     struct node *next;
 } node;
-void solve(node **first, node **second);
-void display(node *head);
-void sort(node **first, node **second) ;
-void insert(int value, node **head);
+
+void display(node *);
+node *solve(node *, node **);
+node *sort(node **, node **); // Corrected declaration
+void insert(int, node **);
+
 int main()
 {
-
-    node *head1=NULL;
+    node *head1 = NULL;
     node *head2 = NULL;
-    // inserting value in node one
+
+    // inserting values into the first linked list
     insert(1, &head1);
     insert(3, &head1);
     insert(5, &head1);
     insert(7, &head1);
     insert(9, &head1);
-    // inserting value in node
-    insert(1, &head2);
-    insert(3, &head2);
-    insert(5, &head2);
-    insert(7, &head2);
-    insert(9, &head2);
-    sort(&head1, &head2);
-    display(&head1);
+
+    // inserting values into the second linked list
+    insert(2, &head2);
+    insert(4, &head2);
+    insert(6, &head2);
+    insert(8, &head2);
+    insert(10, &head2);
+
+    node *sorted = sort(&head1, &head2); // Corrected function call
+    display(sorted);
 }
+
 void insert(int value, node **head)
 {
-    node *temp,*newnode;
-    newnode=(node *)malloc(sizeof(node));
-    if(head==0)
-    {
-        temp=head=newnode;
+    node *newnode = (node *)malloc(sizeof(node));
+    newnode->data = value;
+    newnode->next = NULL;
 
+    if (*head == NULL)
+    {
+        *head = newnode;
     }
     else
     {
-        temp->next=newnode;
-        temp=temp->next;
-
-
+        node *temp = *head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newnode;
     }
 }
-void solve(node **first, **second)
+
+node *solve(node *first, node **second)
 {
-    node *curr1 = *first;
+    if(first->next==NULL)
+    {
+        (first)->next=*second;
+        return first;
+    }
+    node *curr1 = first;
     node *next1 = curr1->next;
     node *curr2 = *second;
     node *next2 = curr2->next;
     while (next1 != NULL && next2 != NULL)
     {
-        if (curr2->data >= curr1->data && curr2->data <= next->data)
+        if (curr2->data >= curr1->data && curr2->data <= next1->data)
         {
-
             curr1->next = curr2;
-            // to keep the track of the next node in list one following step is done
-
-            next2 = curr2->next
-            //curr2 is joined to next1;
+            next2 = curr2->next;
             curr2->next = next1;
             curr1 = curr2;
-            //curr2 will point to next2 because first node is deleted;
-
             curr2 = next2;
         }
-        else if(curr2->data >= curr1->data && curr2->data <= next->data)
+        else
         {
-            curr1=curr1->next;
-            next1=next1->next;
-            if(next1=NULL)
+            curr1 = curr1->next;
+            next1 = next1->next;
+            if (next1 == NULL)
             {
-                curr1->next=curr2;
-                return *first;
+                curr1->next = curr2;
+                return first;
             }
         }
-        
     }
-    return 1;
+    return first;
 }
-void sort(node **first, **second)
+
+node *sort(node **first, node **second)
 {
     if (*first == NULL)
     {
-        return second;
-        
+        return *second;
     }
-    else
+    else if (*second == NULL)
     {
-        return first;
-       
+        return *first;
     }
+
     if ((*first)->data <= (*second)->data)
     {
-        return solve(&first, &second);
+        return solve(*first, second);
     }
     else
     {
-        return solve(&second, &first);
+        return solve(*second, first);
     }
 }
-void display(node *head1)
+
+void display(node *head)
 {
-    node *temp=head1;
-    while(temp->next!=NULL)
+    node *temp = head;
+    while (temp != NULL)
     {
-        printf("%d",temp->data);
+        printf("%d ", temp->data);
+        temp = temp->next;
     }
+    printf("\n");
 }

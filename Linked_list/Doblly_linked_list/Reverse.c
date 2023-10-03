@@ -73,7 +73,7 @@ void reverse_dobly_linked()
     struct node *current ,*nextnode,*tail;
     current=head;
     
-    while(current!=0)
+    while(current!=NULL)
     {
         nextnode=current->next;
         current->next=current->prev;
@@ -81,8 +81,8 @@ void reverse_dobly_linked()
         current=nextnode;
 
     }
-    current =head;
-    head=tail;
-    tail=current;
+    struct node* temp = head;
+    head = tail;
+    tail = temp;
 
 }
