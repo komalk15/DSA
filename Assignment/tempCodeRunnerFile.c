@@ -1,0 +1,1 @@
+node *tail = (*head)->prev;
