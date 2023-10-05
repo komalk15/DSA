@@ -10,7 +10,7 @@ int main()
     
     int top = -1,a=0;
     char ans[size] = " ";
-    char s[size] ="a+(b/c-d)*(e%f)";
+    char s[size] ="((a/b)+c)-(d+(e*f))";
     char st[size];
     int i;
     for (i = 0; i < strlen(s); i++)

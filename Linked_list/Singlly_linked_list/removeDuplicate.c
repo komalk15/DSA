@@ -14,7 +14,13 @@ int main()
     struct node *head=NULL;
     create_list(5, &head);
     create_list(9, &head);
+    create_list(9,&head);
     create_list(8, &head);
+    create_list(5, &head);
+    create_list(3, &head);
+    create_list(7,&head);
+    create_list(3, &head);
+    
 
     printf("\nThe the data of the list  is ");
     display_linked_list(head);

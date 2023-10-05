@@ -11,10 +11,11 @@ void display_linked_list(struct node *head);
 
 int main()
 {
-    struct node *head=NULL;
+    int n;
+    struct node *head;
     create_list(5, &head);
     create_list(9, &head);
-    create_list(8, &head);
+    create_list(5, &head);
 
     printf("\nThe the data of the list  is ");
     display_linked_list(head);
