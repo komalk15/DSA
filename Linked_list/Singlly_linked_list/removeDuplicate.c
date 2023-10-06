@@ -8,21 +8,26 @@ struct node
 };
 void create_list(int n, struct node **head);
 void display_linked_list(struct node *head);
+void detect(struct node **head);
+void display_linked_list(struct node *head);
 
 int main()
 {
-    struct node *head=NULL;
+    struct node *head = NULL;
     create_list(5, &head);
     create_list(9, &head);
-    create_list(9,&head);
+    create_list(9, &head);
     create_list(8, &head);
     create_list(5, &head);
     create_list(3, &head);
-    create_list(7,&head);
+    create_list(7, &head);
     create_list(3, &head);
-    
 
-    printf("\nThe the data of the list  is ");
+    printf("\nThe the data of the list  is:  ");
+    display_linked_list(head);
+    // Remove duplicate
+    detect(&head);
+    printf("\nThe the data of the list  after removal of duplicate elements is: ");
     display_linked_list(head);
     return 0;
 }
@@ -54,5 +59,31 @@ void display_linked_list(struct node *head)
     {
         printf("%d  ", temp->data);
         temp = temp->next;
+    }
+}
+
+void detect(struct node **head)
+{
+    struct node *curr = *head;
+
+    while (curr != NULL)
+    {
+        struct node *nextnode = curr;
+
+        while (nextnode->next != NULL)
+        {
+            if (curr->data == nextnode->next->data)
+            {
+                struct node *tobedeleted = nextnode->next;
+                nextnode->next = nextnode->next->next;
+                free(tobedeleted);
+            }
+            else
+            {
+                nextnode = nextnode->next;
+            }
+        }
+
+        curr = curr->next;
     }
 }
