@@ -114,7 +114,7 @@ int dequeue(node **front,node **rear)
             (*front)->next=NULL;
             free(*front);
             *front=temp;
-            return t;
+            
         }
     }
     return t;
