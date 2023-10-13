@@ -1,79 +1,74 @@
-#include<stdio.h>
-#define max 100
-void enqueue(int * f,int *  r,int value,int q[]);
-void dequeue(int * f,int * r,int value,int q[]);
-void display(int q[],int f,int r);
+#include <stdio.h>
+#define Max_size 10
+
+void enqueue(int q[], int value, int *r, int *f);
+int dequeue(int q[], int *r, int *f);
+void display(int q[], int r, int f);
 
 int main()
 {
-    int value;
-    int r=-1;
-    int f=-1;
-    int q[max];
-    //Enqueue
-    printf("Enter the value to insert");
-    scanf("%d",&value);
-    enqueue(&f,&r,value,q);
-  
-    //display
-    printf("\nQueue after insertion is");
-    display(q,f,r);
-
-
-
-    //Dequeue
-    
-    dequeue(& f,&r,value,q);
-    printf("\nQueue after deletion is ");
-    display(q,f,r);
+    int q[Max_size];
+    int r = -1;
+    int f = -1;
+    enqueue(q, 12, &r, &f);
+    enqueue(q, 4, &r, &f);
+    enqueue(q, 3, &r, &f);
+    display(q, r, f);
+    int item = dequeue(q, &r, &f);
+    printf("The value deleted from the stack is: %d\n", item);
+    display(q, r, f);
     return 0;
-
 }
-void enqueue(int *  f,int * r,int value,int q[])
+
+void enqueue(int q[], int value, int *r, int *f)
 {
-    if(*r==max-1)
+    if (*r == Max_size - 1)
     {
-        printf("\nQueue is full");
+        printf("Stack is full\n");
     }
     else
     {
         if(*f==-1)
         {
             (*f)++;
-            (*r)++;
-            q[*f]=value;
         }
+        (*r)++;
+        q[(*r)]=value;
 
+       
     }
-
 }
 
-void dequeue(int * f,int * r,int value,int q[])
+void display(int q[], int r, int f)
+{
+    for (int i = f; i <= r; i++)
+    {
+        printf("%d ", q[i]); 
+    }
+    printf("\n");
+}
+
+int dequeue(int q[], int *r, int *f)
 {
     int t;
-    if(*f ==-1)
+    if (*f == -1)
     {
-        printf("\nQueue is empty");
+        printf("Stack is empty\n");
+        return -1; 
     }
     else
     {
-        int t=q[*f];
-        f++;
-        if(*f==*r)
+        t = q[*f];
+        
+        if (*f == *r)
         {
-            *f=-1;
-            *r=-1;
-
+            *f = -1;
+            *r = -1;
         }
-
+        else
+        {
+            (*f)++;
+        }
     }
-}
-void display(int q[],int f,int r)
-{
-    int i;
-
-    for(i=f;i<=r;i++)
-    {
-        printf("%d",q[i]);
-    }
+    return t;
 }
