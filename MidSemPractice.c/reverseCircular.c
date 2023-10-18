@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 struct node
@@ -7,6 +8,7 @@ struct node
 };
 void create_circular_linked_list(struct node **head,int value);
 void display(struct node *head);
+void reverse(struct node **head);
 int main()
 {
     struct node *head = NULL;
@@ -17,6 +19,10 @@ int main()
     create_circular_linked_list(&head,6);
     printf("\nThe data of the linked list is:   ");
     display(head);
+    reverse(&head);
+    display(head);
+    return 0;
+
 }
 void create_circular_linked_list(struct node **head,int value)
 {
@@ -35,6 +41,11 @@ void create_circular_linked_list(struct node **head,int value)
         temp = newnode;
         temp->next = *head;
     }
+}
+
+void reverse(struct node **head)
+{
+    
 }
 void display(struct node *head)
 {
