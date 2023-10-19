@@ -1,15 +1,17 @@
-void reversechar(char *s)
+void brackets(char *s)
 {
-    int length = strlen(s);
     int i = 0;
-    int j = length - 1;
-    while (i < j)
+    while (s[i] != '\0')
     {
-        char temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
+
+        if (s[i] == '(')
+        {
+            s[i] = ')';
+        }
+        else if (s[i] == ')')
+        {
+            s[i] = '(';
+        }
         i++;
-        j--;
     }
-    
 }
