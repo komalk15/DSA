@@ -1,33 +1,31 @@
-
 #include <stdio.h>
 #include <stdlib.h>
-
-struct node
+typedef struct node
 {
     int data;
     struct node *next;
-};
-void create_list(int n, struct node **head);
-void display_linked_list(struct node *head);
+} node;
+void insert(node **head, int value);
+void display(node *head);
+
+
 
 int main()
 {
-    struct node *head=NULL;
-    create_list(5, &head);
-    create_list(9, &head);
-    create_list(8, &head);
-
-    printf("\nThe the data of the list  is ");
-    display_linked_list(head);
-    return 0;
+    node *head;
+    head = NULL;
+    insert(&head, 5);
+    insert(&head, 7);
+    insert(&head, 9);
+    insert(&head, 4);
+    display(head);
 }
-void create_list(int n, struct node **head)
+void insert(node **head, int value)
 {
+    node *temp, *newnode;
 
-    struct node *temp, *newnode;
-    int data, i = 0;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = n;
+    newnode = (node *)malloc(sizeof(node));
+    newnode->data = value;
     newnode->next = NULL;
 
     if (*head == NULL)
@@ -40,14 +38,17 @@ void create_list(int n, struct node **head)
         temp = newnode;
     }
 }
-void display_linked_list(struct node *head)
-{
-    struct node *temp;
-    temp = head;
 
-    while (temp != NULL)
+
+
+void display(node *head)
+{
+    node *temp;
+    temp = head;
+    while (temp->next != NULL)
     {
-        printf("%d  ", temp->data);
+        printf("%d ", temp->data);
         temp = temp->next;
     }
+    printf("%d ", temp->data);
 }
