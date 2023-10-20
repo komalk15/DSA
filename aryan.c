@@ -7,8 +7,7 @@ typedef struct node
 } node;
 void insert(node **head, int value);
 void display(node *head);
-void deleteAlternating(node **head);
-
+void Delete(node **head);
 
 int main()
 {
@@ -19,12 +18,8 @@ int main()
     insert(&head, 9);
     insert(&head, 4);
     display(head);
-
-
-    //1 2 3 5
-    // output= 2 5
-    printf("\nList afer deletion from alternating node is :");
-    deleteAlternating(&head);
+    printf("\nLinked list after deletion is:  ");
+    Delete(&head);
     display(head);
 }
 void insert(node **head, int value)
@@ -46,8 +41,6 @@ void insert(node **head, int value)
     }
 }
 
-
-
 void display(node *head)
 {
     node *temp;
@@ -59,25 +52,38 @@ void display(node *head)
     }
     printf("%d ", temp->data);
 }
-void deleteAlternating(node **head)
-{
-    node *nextnode;
-    node *temp;
-    temp = *head;
-    nextnode = temp->next;
+// Input: linked list = 10->20->30->40->50->60
+// Output: 20->40->60
 
-    while (temp != NULL && nextnode != NULL)
+void Delete(node **head)
+{
+    struct node *temp = *head;
+    if (*head == NULL)
+        return;
+
+    if ((*head)->next == NULL)
     {
-        
-        temp->next = nextnode->next;
-        nextnode->next = NULL;
-        free(nextnode);
-        temp = temp->next;
-        if (temp != NULL)
+        (*head)->next = NULL;
+        free(*head);
+    }
+    else
+    {
+        if (temp == *head)
         {
-            nextnode = temp->next;
-            
-            
+            *head = temp->next;
+            free(temp);
+            temp = *head;
+        }
+        struct node *nextnode = temp->next;
+        while (temp != NULL && nextnode != NULL)
+        {
+            temp->next = nextnode->next;
+            free(nextnode);
+            temp = temp->next;
+            if (temp != NULL)
+            {
+                nextnode = temp->next;
+            }
         }
     }
 }

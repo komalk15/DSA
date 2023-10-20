@@ -21,15 +21,13 @@ int main()
     insert(1, &head1);
     insert(3, &head1);
     insert(5, &head1);
-    insert(7, &head1);
-    insert(9, &head1);
+    
 
     // inserting values into the second linked list
-    insert(2, &head2);
-    insert(4, &head2);
-    insert(6, &head2);
-    insert(8, &head2);
-    insert(10, &head2);
+    insert(1, &head2);
+    insert(3, &head2);
+    insert(5, &head2);
+    
 
     node *sorted = sort(&head1, &head2); // Corrected function call
     display(sorted);
@@ -53,6 +51,26 @@ void insert(int value, node **head)
             temp = temp->next;
         }
         temp->next = newnode;
+    }
+}
+node *sort(node **first, node **second)
+{
+    if (*first == NULL)
+    {
+        return *second;
+    }
+    else if (*second == NULL)
+    {
+        return *first;
+    }
+
+    if ((*first)->data <= (*second)->data)
+    {
+        return solve(*first, second);
+    }
+    else
+    {
+        return solve(*second, first);
     }
 }
 
@@ -91,26 +109,7 @@ node *solve(node *first, node **second)
     return first;
 }
 
-node *sort(node **first, node **second)
-{
-    if (*first == NULL)
-    {
-        return *second;
-    }
-    else if (*second == NULL)
-    {
-        return *first;
-    }
 
-    if ((*first)->data <= (*second)->data)
-    {
-        return solve(*first, second);
-    }
-    else
-    {
-        return solve(*second, first);
-    }
-}
 
 void display(node *head)
 {

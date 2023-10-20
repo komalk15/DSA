@@ -18,8 +18,8 @@ void delete_node_before(struct node **head, int min);
 int main()
 {
     struct node *head = NULL;
+    create_list(7, &head);
     create_list(6, &head);
-    create_list(1, &head);
     create_list(2, &head);
     create_list(8, &head);
 
@@ -55,7 +55,7 @@ void create_list(int n, struct node **head)
 void find_min(struct node **head)
 {
     struct node *temp = *head;
-    struct node *prev = NULL;
+   
     int min = INT_MAX;
 
     while (temp != NULL)
@@ -64,7 +64,7 @@ void find_min(struct node **head)
         {
             min = temp->data;
         }
-        prev = temp;
+       
         temp = temp->next;
     }
     printf("\nMinimum element is %d", min);
@@ -115,6 +115,7 @@ void delete_node_before(struct node **head, int min)
     {
         return;
     }
+   
 
     if ((*head)->next->data == min)
     {

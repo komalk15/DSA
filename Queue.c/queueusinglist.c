@@ -62,30 +62,6 @@ void enqueue(node **front,node **rear,int value)
     }
         
 }
-            
-
-void display_linked_list(node *front,node *rear)
-{
-    
-
-    if(front==NULL )
-    {
-        printf("empty");
-    }
-    else
-    {
-        
-        while(front!=rear)
-        {
-            printf("%d\t",front->data);
-            front=front->next;
-        }
-        printf("%d\t",front->data);
-       
-        
-    }
-}
-
 int dequeue(node **front,node **rear)
 {
 
@@ -120,6 +96,30 @@ int dequeue(node **front,node **rear)
     return t;
    
 }
+
+
+void display_linked_list(node *front,node *rear)
+{
+    
+
+    if(front==NULL )
+    {
+        printf("empty");
+    }
+    else
+    {
+        
+        while(front!=rear)
+        {
+            printf("%d\t",front->data);
+            front=front->next;
+        }
+        printf("%d\t",front->data);
+       
+        
+    }
+}
+
 
    
 
