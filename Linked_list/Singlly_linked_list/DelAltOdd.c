@@ -85,10 +85,11 @@ void Delete(node **head)
         {
             temp->next=nextnode->next;
             free(nextnode);
-            temp=temp->next;
-            while(temp!=NULL)
+            
             {
                 nextnode=temp->next;
+                temp=temp->next;
+                 
             }
             
             
