@@ -88,14 +88,12 @@ int main()
     create(&head,4);
     create(&head,2);
     create(&head,6);
-    create(&head,3);
-    create(&head,8);
-    create(&head,5);
+    
     printf("The list is:    ");
     display(head);
 
     printf("The list is:    ");
-    delete(&head,4);
+    delete(&head,3);
     display(head);
     
 
