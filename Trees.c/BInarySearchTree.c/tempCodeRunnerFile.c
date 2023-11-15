@@ -1,0 +1,1 @@
+struct node * newnode=(struct node*)malloc(sizeof(struct node));
