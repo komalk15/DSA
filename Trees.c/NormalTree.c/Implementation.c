@@ -11,18 +11,7 @@ void postorder(struct node *root);
 void inorder(struct node *root);
 struct node *create();
 
-int main()
-{
-    struct node *root = create();
-    printf("Preorder is :   ");
-    preorder(root);
-    printf("inorder is :   ");
-    inorder(root);
-    printf("Postorder is :   ");
-    postorder(root);
 
-    return 0;
-}
 struct node *create()
 {
     int x;
@@ -76,4 +65,16 @@ void inorder(struct node *root)
     inorder(root->right);
     
     
+}
+int main()
+{
+    struct node *root = create();
+    printf("Preorder is :   ");
+    preorder(root);
+    printf("inorder is :   ");
+    inorder(root);
+    printf("Postorder is :   ");
+    postorder(root);
+
+    return 0;
 }

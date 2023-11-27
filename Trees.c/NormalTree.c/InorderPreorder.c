@@ -12,11 +12,12 @@ void postorder(struct node *root);
 void inorder(struct node *root);
 int main()
 {
-    int preorderIndex = 0;
+   
     int arr[11] = {8, 4, 10, 9, 11, 2, 5, 1, 6, 3, 7};
     int pre[11] = {1, 2, 4, 8, 9, 10, 11, 5, 3, 6, 7};
 
     int n = sizeof(arr) / sizeof(arr[0]);
+     int preorderIndex = 0;
     struct node *root = solve(arr, pre, &preorderIndex, 0, n - 1, n);
     printf("\nPreorder is :   ");
     preorder(root);
