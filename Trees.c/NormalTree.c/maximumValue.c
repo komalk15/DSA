@@ -1,6 +1,8 @@
+//Find the maximum value and delete it
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 struct node
 {
     int data;
@@ -10,7 +12,6 @@ void preorder(struct node *root);
 void postorder(struct node *root);
 void inorder(struct node *root);
 struct node *create();
-
 
 struct node *create()
 {
@@ -30,6 +31,27 @@ struct node *create()
     newnode->right = create();
     return newnode;
 }
+int  find_min(struct node *root,int max,int min)
+{
+    if(root==NULL)
+    {
+        return 0;
+    }
+
+
+}
+int  find_min(struct node *root,int max,int min)
+{
+     if(root==NULL)
+    {
+        return 0;
+    }
+
+
+
+}
+
+
 void preorder(struct node *root)
 {
     if (root == 0)
@@ -75,6 +97,7 @@ int main()
     inorder(root);
     printf("Postorder is :   ");
     postorder(root);
+    find_min(root,INT_MAX,INT_MIN);
 
     return 0;
 }

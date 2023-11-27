@@ -74,6 +74,7 @@ struct node *flaten(struct node *root)
         curr->right = temp;
         curr = temp;
     }
+    curr->left=NULL;
     curr->right = NULL;
     return newnode;
 }
