@@ -17,7 +17,7 @@ int main()
     int pre[11] = {1, 2, 4, 8, 9, 10, 11, 5, 3, 6, 7};
 
     int n = sizeof(arr) / sizeof(arr[0]);
-     int preorderIndex = 0;
+    int preorderIndex = 0;
     struct node *root = solve(arr, pre, &preorderIndex, 0, n - 1, n);
     printf("\nPreorder is :   ");
     preorder(root);
@@ -26,6 +26,15 @@ int main()
     printf("\nPostorder is :   ");
     postorder(root);
     return 0;
+}
+int findPosition(int arr[], int element, int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        if (arr[i] == element) {
+            return i;
+        }
+    }
+    return -1; 
 }
 struct node *solve(int arr[], int pre[], int *index, int inorderStart, int inorderEnd, int n)
 {
@@ -77,12 +86,4 @@ void inorder(struct node *root)
 }
 
 
-int findPosition(int arr[], int element, int n) {
-    int i;
-    for (i = 0; i < n; i++) {
-        if (arr[i] == element) {
-            return i;
-        }
-    }
-    return -1; 
-}
+
