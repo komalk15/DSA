@@ -45,7 +45,25 @@ void insert(node **head, int value)
         temp = newnode;
     }
 }
+void deleteAlternating(node **head)
+{
+    node *nextnode;
+    node *temp;
+    temp = *head;
+    nextnode = temp->next;
 
+    while (temp != NULL && nextnode != NULL)
+    {
+        temp->next = nextnode->next;
+        nextnode->next = NULL;
+        free(nextnode);
+        temp = temp->next;
+        if (temp != NULL)
+        {
+            nextnode = temp->next;
+        }
+    }
+}
 
 
 void display(node *head)
@@ -58,26 +76,4 @@ void display(node *head)
         temp = temp->next;
     }
     printf("%d ", temp->data);
-}
-void deleteAlternating(node **head)
-{
-    node *nextnode;
-    node *temp;
-    temp = *head;
-    nextnode = temp->next;
-
-    while (temp != NULL && nextnode != NULL)
-    {
-        
-        temp->next = nextnode->next;
-        nextnode->next = NULL;
-        free(nextnode);
-        temp = temp->next;
-        if (temp != NULL)
-        {
-            nextnode = temp->next;
-            
-            
-        }
-    }
 }
