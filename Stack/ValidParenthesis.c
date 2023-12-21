@@ -8,7 +8,7 @@ int main()
 {
     int top = -1;
     char st[max];
-    char str[max] = "((())))";
+    char str[max] = "(";
     int i;
     int flag;
     for (i = 0; i < strlen(str); i++)
@@ -17,36 +17,30 @@ int main()
         {
             push(st, &top, str[i]);
         }
-
-        else 
+        else
         {
-
-            if (top == -1 )
+            if (top == -1)
             {
-                
-                printf("\nUnbalanced");
+                printf("\nunbalance");
                 return 0;
-                
             }
             else
             {
                 pop(st, &top);
-                
-                
             }
         }
     }
-    if (top == -1 )
+    if (top == -1)
     {
-    
-        printf("\nbalanced");
+        printf("balanced");
     }
     else
     {
-        printf("\nUnbalanced");
+        printf("Unbalanced");
     }
     return 0;
 }
+
 void push(char st[], int *top, char value)
 {
     if (*top > max - 1)

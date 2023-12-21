@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *next;
 };
-struct node *tail;
+
 void create_circular_linked_list(struct node **head,int value);
 void display(struct node *head);
 int main()
@@ -22,6 +22,7 @@ int main()
 void create_circular_linked_list(struct node **head,int value)
 {
     int i;
+    struct node *tail;
     struct node *newnode;
     newnode = (struct node *)malloc(sizeof(struct node));
     newnode->next=NULL;
@@ -40,6 +41,7 @@ void create_circular_linked_list(struct node **head,int value)
 void display(struct node *head)
 {
 
+    struct node *tail;
     struct node *temp;
     temp=tail->next;
     if (head == NULL)

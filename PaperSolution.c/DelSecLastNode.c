@@ -60,7 +60,6 @@ void delete(struct node **head, int n)
     struct node* current = *head;
     struct node* prev = NULL;
 
-    // Traverse the list to find the second last and last nodes
     while (current->next->next != NULL) {
         prev = current;
         current = current->next;    // 1 3 6 7 9         prev<-6  cur<-7
