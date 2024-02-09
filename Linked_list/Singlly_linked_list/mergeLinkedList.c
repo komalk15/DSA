@@ -61,7 +61,7 @@ node *sort(node **first, node **second)
     {
         return *second;
     }
-    else if (*second == NULL)
+    if (*second == NULL)
     {
         return *first;
     }
@@ -77,20 +77,21 @@ node *sort(node **first, node **second)
 }
 node *solve(node *first, node **second)
 {
-    if(first->next==NULL)
+    if (first->next == NULL)
     {
-        (first)->next=*second;
+        (first)->next = *second;
         return first;
     }
     node *curr1 = first;
     node *next1 = curr1->next;
     node *curr2 = *second;
-    node *next2 
+    node *next2;
     while (next1 != NULL && next2 != NULL)
     {
         if (curr2->data >= curr1->data && curr2->data <= next1->data)
         {
             curr1->next = curr2;
+
             next2 = curr2->next;
             curr2->next = next1;
             curr1 = curr2;
@@ -109,8 +110,6 @@ node *solve(node *first, node **second)
     }
     return first;
 }
-
-
 
 void display(node *head)
 {

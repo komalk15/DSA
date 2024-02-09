@@ -17,7 +17,7 @@ int main()
 {
     int ch = 1;
     int val;
-    struct node *root = NULL; // Initialize root to NULL
+    struct node *root = NULL; 
 
     while (ch == 1)
     {

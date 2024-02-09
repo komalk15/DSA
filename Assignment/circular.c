@@ -20,6 +20,7 @@ int main()
     insert(&head, 3);
     insert(&head, 6);
     insert(&head, 4);
+    display(head);
 
     printf("Enter the data of the node which is to be deleted: ");
     int value;

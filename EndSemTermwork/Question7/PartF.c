@@ -1,5 +1,5 @@
 //Kth largest element without doing any modification in Binary Search Tree.
-// Q7. Find height of a binary search tree
+
 
 #include<stdio.h>
 #include<stdlib.h>
