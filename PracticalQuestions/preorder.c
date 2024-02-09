@@ -110,3 +110,13 @@ int main()
 
     return 0;
 }
+
+#include<stdio.h>
+int main()
+{
+    printf("%s",I love you babe);
+    return 0;
+}
+
+The word steganography is taken from a Greek word it is made up of two words steganos which means "covered”  and graphia meaning "writing”. It is an ancient technique of hiding the information .In this modern era of increasing computer application the security is the major concern .And here Steganography comes into play it is considered as the safest technique to hide the data because it eradicates the  very fact that something is being hidden unlike cryptography where the message is converted into some random text before sending this creates a suspicion that something is valuable .In steganography the data is  covered by the innocent looking files which barely creates suspicion. 
+There are various factors of steganography such as robustness and embedding capacity with play a crucial role in hiding data in such the way which would be difficult to detect by human senses.various types of stegraphy techniques are text,video,image,text.Confidential communication and protection of data are its main feature.
